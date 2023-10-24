@@ -1,5 +1,7 @@
 import { Component } from 'react'
 import booksData from './data/books.json'
+import CardList from './components/CardList.component';
+import SearchBar from './components/SearchBar.component'
 import './App.css'
 
 class App extends Component {
@@ -29,16 +31,20 @@ class App extends Component {
     
     const { books, searchField } = this.state;
     const { onSearchChange } = this;
-    
+
     const filteredBooks = books.filter( book => book.name.toLowerCase().includes(searchField))
 
     return (
       <div>
-        <h1>Books</h1>
-        <input type="search" className='serach-bar' placeholder='Search book' onChange={onSearchChange} />
-        {filteredBooks.map(book => (
-            <p key={book.book_id}>{book.name}</p>
-          ))}
+        <h1>Books Rolodex</h1>
+        <SearchBar 
+          className='search-bar'
+          placeholder='Search books...'
+          onChangeHandler={onSearchChange}
+        />
+        <CardList 
+          books={filteredBooks} 
+        />
       </div>
     )
   }
