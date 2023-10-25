@@ -1,5 +1,6 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
+import Card from "./Card.component"
 
 class CardList extends Component {
 
@@ -7,11 +8,20 @@ class CardList extends Component {
     const {books} = this.props;
 
     return(
-      books.map(book => {
-        return (
-          <p key={book.book_id}>{book.name}</p>
-        )
-      })
+      <div className="card-list">
+        {books.map(book => {
+          const { cover, name, category, id } = book;
+          return (
+            <Card 
+              key={id}
+              id={id}
+              cover={cover}
+              name={name}
+              category={category}
+            />
+          )
+        })}
+      </div>
     )
   }
 

@@ -30,3 +30,23 @@ h1{
   padding: .8em 1.5em;
   width: 40%;
 }
+
+.card-list{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  margin: 4em 2em;
+}
+
+.card{
+  transition: all 0.3s;
+}
+
+.card:hover{
+  transform: scale(1.05);  
+}
+
+.card__cover{
+  width: 60%;
+  object-fit: cover;
+}
