@@ -10,7 +10,7 @@ class CardList extends Component {
     return(
       <div className="card-list">
         {books.map(book => {
-          const { cover, name, category, id } = book;
+          const { cover, name, category, url, id } = book;
           return (
             <Card 
               key={id}
@@ -18,6 +18,7 @@ class CardList extends Component {
               cover={cover}
               name={name}
               category={category}
+              link={url}
             />
           )
         })}

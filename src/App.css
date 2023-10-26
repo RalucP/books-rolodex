@@ -35,11 +35,25 @@ h1{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
-  margin: 4em 2em;
+  margin: 3em 2em;
 }
 
 .card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  margin: .6em;
+  padding: 1em;
+  border-radius: .3em;
+  color: black;
+  background-color: rgb(246, 242, 242);
+
+  cursor: default;
   transition: all 0.3s;
+
+  position: relative;
 }
 
 .card:hover{
@@ -49,4 +63,43 @@ h1{
 .card__cover{
   width: 60%;
   object-fit: cover;
+
+  box-shadow: .3em .3em .2em rgb(216, 216, 216);
+}
+
+.card__title{
+  margin: 0;
+  font-size: 1.4em;
+  margin: .5em 0;
+}
+
+.card__category{
+  margin: 0;
+  color: #535353;
+}
+
+.card__link{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3em;
+
+  cursor: pointer;
+  color: #000;
+  background-color: #e9e5cd;
+
+  border-radius: 3em;
+  margin: .5em;
+  padding: .3em;
+  width: 70%;
+}
+
+.card__link:hover{
+  background-color: #dfdab9;
+  color: black;
+}
+
+
+.card__link img{
+  width: 40%;
 }
