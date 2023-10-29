@@ -1,54 +1,38 @@
-import { Component } from 'react'
+import { useEffect, useState } from 'react';
 import booksData from './data/books.json'
 import CardList from './components/CardList.component';
 import SearchBar from './components/SearchBar.component'
 import './App.css'
 
-class App extends Component {
-  constructor(){
-    super();
+const App = () => {
 
-    this.state = {
-      books: [],
-      searchField: ''
-    }
+  const [ books ] = useState(booksData);
+  const [searchField, setSearchField] = useState('');
+  const [filteredBooks, setFilteredBooks] = useState(books);
+
+  const onSearchChange = (event) => {
+      const searchFieldString = event.target.value.toLowerCase();
+      setSearchField(searchFieldString);
   }
 
-  componentDidMount(){
-    this.setState({
-      books: booksData
-    })
-  }
+  useEffect(() => {
+    const newFilteredMonsters = books.filter( book => book.name.toLowerCase().includes(searchField))
+    setFilteredBooks(newFilteredMonsters);
+  }, [books, searchField])
 
-  onSearchChange = (event) => {
-    this.setState(() => {
-      const searchField = event.target.value.toLowerCase();
-      return { searchField }
-    });
-  }
-
-  render(){
-    
-    const { books, searchField } = this.state;
-    const { onSearchChange } = this;
-
-    const filteredBooks = books.filter( book => book.name.toLowerCase().includes(searchField))
-
-    return (
-      <div>
-        <h1>Books Rolodex</h1>
-        <SearchBar 
-          className='search-bar'
-          placeholder='Search books...'
-          onChangeHandler={onSearchChange}
-        />
-        <CardList 
-          books={filteredBooks} 
-        />
-      </div>
-    )
-  }
-
+  return(
+    <div>
+      <h1>Books Rolodex</h1>
+      <SearchBar 
+        className='search-bar'
+        placeholder='Search books...'
+        onChangeHandler={onSearchChange}
+      />
+      <CardList 
+        books={filteredBooks} 
+      />
+    </div>
+  )
 }
 
-export default App
+export default App;
