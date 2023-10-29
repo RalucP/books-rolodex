@@ -10,15 +10,11 @@ class CardList extends Component {
     return(
       <div className="card-list">
         {books.map(book => {
-          const { cover, name, category, url, id } = book;
+          const { book_id } = book;
           return (
             <Card 
-              key={id}
-              id={id}
-              cover={cover}
-              name={name}
-              category={category}
-              link={url}
+              key={book_id}
+              book={book}
             />
           )
         })}
