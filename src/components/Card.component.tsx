@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
 import goodreadsLogo from "../assets/goodreads_logo.svg"
 
-const Card = ({ book }) => {
+import { Book } from "../App";
+
+type CardProps = {
+  book: Book;
+}
+
+const Card = ({ book }: CardProps) => {
   const { cover, name, category, url } = book;
   
   return (

@@ -1,16 +1,24 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import booksData from './data/books.json'
 import CardList from './components/CardList.component';
 import SearchBar from './components/SearchBar.component'
 import './App.css'
 
+export type Book = {
+  book_id: string;
+  name: string;
+  category: string;
+  cover: string;
+  url: string;
+}
+
 const App = () => {
 
-  const [ books ] = useState(booksData);
+  const [ books, setBooks ] = useState(booksData);
   const [searchField, setSearchField] = useState('');
   const [filteredBooks, setFilteredBooks] = useState(books);
 
-  const onSearchChange = (event) => {
+  const onSearchChange = (event: ChangeEvent<HTMLInputElement>) : void => {
       const searchFieldString = event.target.value.toLowerCase();
       setSearchField(searchFieldString);
   }
